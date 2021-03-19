@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+ 999999
+ <br/>
+ <p th:each="list:${stringList}" th:text="${list}"></p>
+ <table border="2">
+ <tr th:each="list:${stringList}">
+     <td th:text="${list}"></td>
+ </tr>
+
+ </table>
+ <p th:text="(${hello}!=null)? 'hello':'hello不存在'"></p>
+<p th:text="${hello}"></p>
+<hr>
+ <!--传值给javascript-->
+ <a href="javascript:a(123)">点一下</a><br>
+<a th:href="'javascript:a(123)'">"'javascript:a(123)'" </a><br>
+<a th:href="'javascript:a(\''+${hello}+'\')'">"'javascript:a(''+${hello}+'')'"</a>
+ //引入页面
+<div th:include="indexInner"></div>
+ //引入页面的一部分
+ <div th:include="indexInner::part1"></div>
+
+</body>
+<script type="text/javascript">
+    function a(hello) {
+        alert(hello);
+    }
+</script>
+</html>
